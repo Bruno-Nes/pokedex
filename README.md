@@ -1,0 +1,1 @@
+TODO: um input que recebe a quantidade de pokemons que o user quer trazer
