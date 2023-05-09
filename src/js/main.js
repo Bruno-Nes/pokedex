@@ -1,30 +1,32 @@
-import { getPokemons } from "../services/poke-api.js";
-import { convertPokemonToHtml } from "../view/pokemon-card.js"
+import { loadPokemonItens } from "../controllers/show-poke-controller.js";
 
 const pokemonsList = document.querySelector("#pokemonsList");
 const loadForm = document.querySelector("#loadForm");
-
+const pokeDetailHtml = document.querySelector("#modal-container");
 const loadMoreBtn = document.querySelector("#loadMoreBtn");
-let limit = 10;
 let offset = 0;
+let limit = 6;
 
-
-function loadPokemonItens(offset, limit) {
-    getPokemons(offset, limit).then((pokemonList = []) => {
-        pokemonsList.innerHTML += pokemonList.map((pokemon)=>{
-            return convertPokemonToHtml(pokemon)
-        }).join('');
-    })
+async function getLi() {
+    await loadPokemonItens(offset, limit, pokemonsList)
+    let pokemons = document.querySelectorAll('.pokemon');
+    return pokemons;
 }
 
-loadPokemonItens(offset, limit);
+getLi().then((res) => {
+    res.forEach(e => {
+        e.addEventListener('click', (e) => {
+            
+        })
+    })
+});
 
 loadForm.addEventListener('click', (e) => {
     e.preventDefault();
     loadMoreBtn.addEventListener('click', () => {
-        // let limit = 10;
-        // let offset = 0;
-        offset = document.querySelector("#loadMoreInput").value;
+        // para que o user decida quantos serão carregados, basta mudar o 'limit'        
+        offset += limit; 
+        // document.querySelector("#loadMoreInput").value;
         loadPokemonItens(offset, limit);
     })
 })
