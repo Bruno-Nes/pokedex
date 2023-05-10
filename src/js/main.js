@@ -1,4 +1,4 @@
-import { loadPokemonItens } from "../controllers/show-poke-controller.js";
+import { start } from '../controllers/Application.js';
 
 const pokemonsList = document.querySelector("#pokemonsList");
 const loadForm = document.querySelector("#loadForm");
@@ -7,28 +7,18 @@ const loadMoreBtn = document.querySelector("#loadMoreBtn");
 let offset = 0;
 let limit = 6;
 
-async function getLi() {
-    await loadPokemonItens(offset, limit, pokemonsList)
-    let pokemons = document.querySelectorAll('.pokemon');
-    return pokemons;
-}
+// start the application
+start(offset, limit, pokemonsList);
 
-getLi().then((res) => {
-    res.forEach(e => {
-        e.addEventListener('click', (e) => {
-            
-        })
-    })
-});
+loadMoreBtn.addEventListener('click', () => {
+    //animacao do menu
+    loadForm.classList.toggle('active')
 
-loadForm.addEventListener('click', (e) => {
-    e.preventDefault();
-    loadMoreBtn.addEventListener('click', () => {
-        // para que o user decida quantos serão carregados, basta mudar o 'limit'        
-        offset += limit; 
-        // document.querySelector("#loadMoreInput").value;
-        loadPokemonItens(offset, limit);
-    })
+
+    // para que o user decida quantos serão carregados, basta mudar o 'limit'        
+    offset += limit; 
+    // document.querySelector("#loadMoreInput").value;
+    loadPokemonItens(offset, limit, pokemonsList);
 })
 
 

@@ -20,11 +20,13 @@
         <!-- cards dos pokemons -->
         <section>
             <ol class="pokemons" id="pokemonsList"></ol>
-                <form id="loadForm" class="pagination " action="">
-                    <input type="number" id="loadMoreInput" placeholder="Quantos pokemons deseja carregar?">
+                <div id="loadForm" class="pagination " action="">
                     <button class="toggle" type="submit" id="loadMoreBtn">Load More</button>
-
-                </form>
+                    <li style="--i:1;"><span>+6</span></li>
+                    <li style="--i:2;"><span>+10</span></li>
+                    <li style="--i:3;"><span>+15</span></li>
+                    <!-- <li style="--i:4;"><input type="number" id="loadMoreInput" placeholder="Quantos pokemons deseja carregar?"></li> -->
+                </div>
         </section>
         <!-- <div id="modal-container" class="modal-container grass">
             

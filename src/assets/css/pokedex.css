@@ -14,7 +14,7 @@
     padding: 1rem;
     border-radius: 1rem;
     color: #FFF;
-    /* background-color: #49D0B0; */
+    cursor: pointer;
 }
 
 .pokemon .number{
@@ -59,11 +59,14 @@
 }
 
 .pagination {
+    margin-top: 4rem;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    height: 140px;
     padding: 1rem;
+    position: relative;
 }
 
 .pagination input {
@@ -80,15 +83,44 @@
     color: #6c79db;
 }
 
+.pagination li{
+    position: absolute;
+    list-style: none;
+    left: 42%;
+    transform-origin: 90px;
+    transition: 0.5s;
+    transition-delay: calc(0.1s * var(--i));
+    transform: rotate(0deg) translateX(75px);
+}
+
+.pagination.active li {
+    transform: translate(0%, -20%) rotate(calc(135deg/3 * var(--i)));
+}
+
+.pagination li span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #6c79db;
+    border-radius: 30px;
+    color: #fff;
+    transform: rotate(calc(135deg / -3 * var(--i)));
+}
 
 .pagination button {
-    padding: 0.5rem 0.75rem;
+    position: absolute;
+    z-index: 999;
+    
+    padding: 0.8rem 0.85rem;
     margin: 0.25rem 0;
-    font-size: 0.825rem;
-    color: #6c79db;
-    background: transparent;
-    border: 1.5px solid #6c79db;
+    font-size: 0.925rem;
+    color: #fff;
+    background: #6c79db;
+    border: none;
     border-radius: 12px;
+    cursor: pointer;
 }
 
 @media screen and (min-width: 576px) {

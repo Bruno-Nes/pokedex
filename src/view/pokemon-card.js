@@ -1,3 +1,5 @@
+import { loadPokemonItens } from "../controllers/show-poke-controller.js";
+
 export function convertPokemonToHtml(pokemon) {
     return `
     <li class="pokemon ${pokemon.type}">
@@ -11,4 +13,10 @@ export function convertPokemonToHtml(pokemon) {
     </div>
     </li>
     `
+}
+
+export async function buildLi(offset, limit, pokemonsList) {
+    await loadPokemonItens(offset, limit, pokemonsList)
+    let pokemons = document.querySelectorAll('.pokemon');
+    return pokemons;
 }
