@@ -22,7 +22,8 @@ main{
 }
 
 .grass{
-    background-color: #77c850;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 8%, #77c850 70%);
+    /* background-color: #77c850; */
 }
 .fire{
     background-color: #ee7f30;

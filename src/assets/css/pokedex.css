@@ -111,7 +111,7 @@
 
 .pagination button {
     position: absolute;
-    z-index: 999;
+    z-index: 997;
     
     padding: 0.8rem 0.85rem;
     margin: 0.25rem 0;

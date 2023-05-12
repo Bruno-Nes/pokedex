@@ -1,7 +1,9 @@
 export class Detail {
     number;
     name;
-    image; 
+    photo;
+    abilities;
+    eggGroups; 
     type;
     types = [];
     height;
@@ -9,4 +11,7 @@ export class Detail {
     hp;
     attack;
     defense;   
+    specialAttack;
+    specialDefense;
+    speed;
 }

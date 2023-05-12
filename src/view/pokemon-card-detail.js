@@ -10,7 +10,7 @@ export function showPokemonsDetailOnClick() {
         </ol>
     </div>
     <figure>
-        <img class="pokemon-detail__image" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="${pokemon.name}">
+        <img class="pokemon-detail__image" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="">
     </figure>
     </section>
     <section class="pokemon-about__wrapper">
@@ -45,6 +45,13 @@ export function showPokemonsDetailOnClick() {
             <p class="pokemon-about-infos__name">Egg Cycle</p>
             <p class="pokemon-about-infos__description">Grass</p>
         </div>
+        <button class="detail-btn grass" id="detail-btn">Close</button>
     </section>
     `
+}
+
+export function closeView(parentHtml) {
+    document.querySelector("#detail-btn").addEventListener('click', () => {
+        parentHtml.style.display = "none";
+    })
 }
