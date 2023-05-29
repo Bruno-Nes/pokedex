@@ -1,9 +1,13 @@
 import { convertPokeApiDetailToAboutDetail } from './poke-about-detail.js';
-const baseURL = 'https://pokeapi.co/api/v2/pokemon/';
+import { environment } from '../../environments/evironments.js';
 
 export class PokemonDetails {
+
+    baseURL = environment.baseURL;
+
     async getPokemonDetails(pokemonNumber) {
-        let pokemonDetailsUrl = baseURL + pokemonNumber;
+        let pokemonDetailsUrl = this.baseURL + pokemonNumber;
+        console.log(pokemonDetailsUrl)
         const response = await fetch(pokemonDetailsUrl);
         const detail = await response.json();
         const eggGroupNamesArray = await this.getEggGroupsNamesFromSpeciesUrl(detail.species.url);

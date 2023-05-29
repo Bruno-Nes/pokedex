@@ -22,6 +22,5 @@ export function convertPokeApiDetailToAboutDetail(detail, eggGroupNamesArray) {
     pokemonDetail.defense = detail.stats[2].base_stat;
     pokemonDetail.specialAttack = detail.stats[3].base_stat;
     pokemonDetail.specialDefense = detail.stats[4].base_stat;
-    pokemonDetail.speed = detail.stats[5].base_stat;
     return pokemonDetail;
 }

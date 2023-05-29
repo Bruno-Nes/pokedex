@@ -1,57 +1,71 @@
-export function showPokemonsDetailOnClick() {
+export function showPokemonsDetailOnClick(pokemonDetail) {
     return `
-    <section class="pokemon-detail">
-    <h1 class="pokemon-detail__title">Bulbasaur</h1>
-    <div class="pokemon-detail__number"><span>#001</span></div>
+    <section class="pokemon-detail ${pokemonDetail.type}">
+    <h1 class="pokemon-detail__title">${pokemonDetail.name}</h1>
+    <div class="pokemon-detail__number"><span>${10 > pokemon.number ? "#00" + pokemon.number : "#0" + pokemon.number}</span></div>
     <div class="pokemon-detail__types">
         <ol class="pokemon-detail__types--list">
-            <li class="pokemon-detail__type">Grass</li>
-            <li class="pokemon-detail__type">Poison</li>
+            ${pokemonDetail.types.map(type => `<li class="pokemon-detail__type ${type}">${type}</li>`)}
         </ol>
     </div>
     <figure>
-        <img class="pokemon-detail__image" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="">
+        <img class="pokemon-detail__image" src="${pokemonDetail.photo}" alt="${pokemonDetail.name}">
     </figure>
     </section>
     <section class="pokemon-about__wrapper">
         <p class="pokemon-about__title">About</p>
         <hr>
         <div class="pokemon-about-infos">
-            <p class="pokemon-about-infos__name">Species</p>
-            <p class="pokemon-about-infos__description">Seed</p>
+            <p class="pokemon-about-infos__name">Abilities</p>
+            ${pokemonDetail.abilities.map(ability => `<p class="pokemon-about-infos__description">${ability}</p>`)}    
         </div>
         <div class="pokemon-about-infos">
             <p class="pokemon-about-infos__name">Height</p>
-            <p class="pokemon-about-infos__description">2'3.6(0.70cm)</p>
+            <p class="pokemon-about-infos__description">${pokemonDetail.height}</p>
         </div>
         <div class="pokemon-about-infos">
             <p class="pokemon-about-infos__name">Weight</p>
-            <p class="pokemon-about-infos__description">15.2 lbs(6.9kg)</p>
-        </div>
-        <div class="pokemon-about-infos">
-            <p class="pokemon-about-infos__name">Abilities</p>
-            <p class="pokemon-about-infos__description">Overgrow, Chiorophyl</p>
-        </div>
-        <h2 class="pokemon-about__title-breeding">Breeding</h2>
-        <div class="pokemon-about-infos">
-            <p class="pokemon-about-infos__name">Gender</p>
-            <p class="pokemon-about-infos__description"><span>87.5%</span><span>12.5%</span></p>
+            <p class="pokemon-about-infos__description">${pokemonDetail.weight}</p>
         </div>
         <div class="pokemon-about-infos">
             <p class="pokemon-about-infos__name">Egg Groups</p>
-            <p class="pokemon-about-infos__description">Monster</p>
+            ${pokemonDetail.eggGroups.map(eggGroup => `<p class="pokemon-about-infos__description">${eggGroup}</p>`)}
         </div>
         <div class="pokemon-about-infos">
             <p class="pokemon-about-infos__name">Egg Cycle</p>
-            <p class="pokemon-about-infos__description">Grass</p>
+            <p class="pokemon-about-infos__description">${pokemonDetail.type}</p>
         </div>
-        <button class="detail-btn grass" id="detail-btn">Close</button>
+        <h2 class="pokemon-about__title-breeding">Stats</h2>
+        <div class="pokemon-about-infos">
+            <p class="pokemon-about-infos__name">HP</p>
+            <p class="pokemon-about-infos__description">${pokemonDetail.hp}</p>
+        </div>
+        <div class="pokemon-about-infos">
+            <p class="pokemon-about-infos__name">Attack</p>
+            <p class="pokemon-about-infos__description">${pokemonDetail.attack}</p>
+        </div>
+        <div class="pokemon-about-infos">
+            <p class="pokemon-about-infos__name">Defense</p>
+            <p class="pokemon-about-infos__description">${pokemonDetail.defense}</p>
+        </div>
+        <div class="pokemon-about-infos">
+            <p class="pokemon-about-infos__name">Special Attack</p>
+            <p class="pokemon-about-infos__description">${pokemonDetail.specialAttack}</p>
+        </div>
+        <div class="pokemon-about-infos">
+            <p class="pokemon-about-infos__name">Special Defense</p>
+            <p class="pokemon-about-infos__description">${pokemonDetail.specialDefense}</p>
+        </div>
+        <button class="detail-btn ${pokemonDetail.type}" id="detail-btn">Close</button>
     </section>
     `
 }
 
 export function closeView(parentHtml) {
-    document.querySelector("#detail-btn").addEventListener('click', () => {
-        parentHtml.style.display = "none";
-    })
+    const btn = document.querySelector("#detail-btn")
+    if(btn) {
+        btn.addEventListener('click', () => {
+            parentHtml.style.display = "none";
+        })
+    }
 }

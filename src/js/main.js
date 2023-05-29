@@ -1,4 +1,5 @@
 import { ControlApp } from '../controllers/Application.js';
+import { loadPokemon } from '../controllers/show-poke-controller.js'
 
 const pokemonsList = document.querySelector("#pokemonsList");
 const loadForm = document.querySelector("#loadForm");
@@ -14,7 +15,10 @@ let limit = 6;
 
 // start the application
 const controlApp = new ControlApp();
-controlApp.buildPokemons(offset, limit, pokemonsList, cardDetailArray);
+// controlApp.buildPokemons(offset, limit, pokemonsList, cardDetailArray);
+loadPokemon(offset, limit).then(
+    res => console.log(res)
+);
 
 loadMoreBtn.addEventListener('click', (e) => {
     e.preventDefault();

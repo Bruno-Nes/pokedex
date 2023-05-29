@@ -1,4 +1,4 @@
-import { loadPokemonItens } from "../controllers/show-poke-controller.js";
+// import { loadPokemonItens } from "../controllers/show-poke-controller.js";
 
 export function convertPokemonToHtml(pokemon) {
     return `
